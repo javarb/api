@@ -1,6 +1,5 @@
 package co.org.osso.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,20 +9,17 @@ import java.util.List;
 @RequestMapping("/api")
 public class BookController {
 
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
+    private final BookService bookService;
 
-    @Autowired
-    private BookService bookService;
+    BookController(CustomerService customerService, BookService bookService){
+        this.customerService = customerService;
+        this.bookService = bookService;
+    }
 
     @GetMapping("/customer")
     public List getCustomers() {
         return customerService.getCustomers();
-    }
-
-    @GetMapping("/book")
-    public String printForm() {
-        return "index";
     }
 
     @PostMapping("/book")
@@ -36,7 +32,6 @@ public class BookController {
 
     @GetMapping("/book/{id}")
     public Book getData(@PathVariable("id") String id) {
-        //System.out.println(id);
         return bookService.getBook(id);
     }
 

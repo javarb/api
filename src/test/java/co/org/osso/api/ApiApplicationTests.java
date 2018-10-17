@@ -23,9 +23,8 @@ public class ApiApplicationTests {
 	public void checkBookServiceGetCustomers(){
 		List<Customer> customers = service_target.getCustomers();
         Assert.assertEquals("1111", customers.get(0).getCustomerID().toString());
-		//Assert.assertEquals("reivaj49@gmail.com", customer.getEmailAddress());
-
 	}
+
 	@Test
 	public void checkBookControllerNotNull() {
         List<Customer> customers = controller_target.getCustomers();
