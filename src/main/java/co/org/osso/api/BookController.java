@@ -3,36 +3,28 @@ package co.org.osso.api;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/book")
 public class BookController {
 
-    private final CustomerService customerService;
     private final BookService bookService;
 
-    BookController(CustomerService customerService, BookService bookService){
-        this.customerService = customerService;
+    BookController(BookService bookService) {
         this.bookService = bookService;
+
     }
 
-    @GetMapping("/customer")
-    public List getCustomers() {
-        return customerService.getCustomers();
-    }
-
-    @PostMapping("/book")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book postData(
-            @RequestBody Book book
-    ) {
+    public Book postBook(@RequestBody final Book book) {
         return bookService.createBook(book);
+
     }
 
-    @GetMapping("/book/{id}")
-    public Book getData(@PathVariable("id") String id) {
+    @GetMapping("{id}")
+    public Book getData(@PathVariable("id") Integer id) {
         return bookService.getBook(id);
+
     }
 
 }

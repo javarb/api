@@ -14,27 +14,29 @@ public class CustomerService {
         customersList.add(createCustomer(2222, "Test user 2", "test2@mail.com", "02-02-1902"));
         customersList.add(createCustomer(3333, "Test user 3", "test3@mail.com", "03-03-1903"));
         return customersList;
+
     }
 
-
-    public Customer createCustomer(Integer ID, String name, String email, String dob){
+    private Customer createCustomer(Integer id, String name, String email, String dob) {
         Customer customer = new Customer();
         customer.setName(name);
-        customer.setCustomerID(ID);
+        customer.setCustomerID(id);
         customer.setEmailAddress(email);
         customer.setDateOfBirth(dob);
         return customer;
+
     }
 
 }
 
 class Customer {
+
     private String name;
     private Integer customerID;
     private String emailAddress;
     private String dateOfBirth;
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -42,7 +44,7 @@ class Customer {
         return name;
     }
 
-    public void setCustomerID(Integer customerID){
+    public void setCustomerID(Integer customerID) {
         this.customerID = customerID;
     }
 
@@ -50,7 +52,7 @@ class Customer {
         return customerID;
     }
 
-    public void setEmailAddress(String emailAddress){
+    public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
@@ -58,11 +60,13 @@ class Customer {
         return emailAddress;
     }
 
-    public void setDateOfBirth(String dateOfBirth){
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getDateOfBirth(){
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
+
 }
+
