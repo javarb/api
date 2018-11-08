@@ -7,24 +7,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static co.org.osso.api.CalculatorCommands.SUM;
+import static java.lang.Enum.valueOf;
 
 @Service
 public class Calculator {
 
+    List<BigInteger> fibonacci = new ArrayList<>();
 
-    public List<Integer> getFibonacci(Integer number) {
+    public List<BigInteger> getFibonacci(Integer number) {
 
-        List<Integer> fibonacci = new ArrayList<>();
-        fibonacci.add(1);
-        fibonacci.add(1);
+        if (fibonacci.size() >= number){
+            System.out.println("CACHE number = " + number);
+            return fibonacci.subList(0,number-1);
+        }
+
+        if (fibonacci.size() == 0) {
+            fibonacci.add(BigInteger.ONE);
+            fibonacci.add(BigInteger.ONE);
+        }
 
         for (int i = 2; i < number; i++) {
-            fibonacci.add(i, fibonacci.get(i - 1) + fibonacci.get(i - 2));
+           fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
         }
 
         return fibonacci;
 
     }
+
+    /*
+    func fibonacci() func() int {
+        x, y := 0, 1
+        return func() int {
+            x, y = y, x + y
+            return x
+        }
+    }
+    */
 
     public BigInteger getFactorial(int number) {
         BigInteger factorial = BigInteger.ONE;
@@ -32,6 +50,7 @@ public class Calculator {
             factorial = factorial.multiply(BigInteger.valueOf(i));
 
         return factorial;
+
     }
 
 

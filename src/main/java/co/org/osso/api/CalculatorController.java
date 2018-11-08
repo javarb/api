@@ -20,7 +20,7 @@ public class CalculatorController {
     }
 
     @GetMapping("/fibonacci/{number}")
-    public List getFibonacci(@PathVariable("number") Integer number){
+    public List<BigInteger> getFibonacci(@PathVariable("number") Integer number){
         return calculator.getFibonacci(number);
     }
 

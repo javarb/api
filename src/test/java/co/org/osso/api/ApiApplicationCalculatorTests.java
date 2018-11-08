@@ -14,14 +14,14 @@ public class ApiApplicationCalculatorTests {
     @Test
     public void checkCalculatorFibonacci(){
         List<Integer> expected = Arrays.asList(1,1,2,3,5);
-        List<Integer> actual = target.getFibonacci(5);
+        List<BigInteger> actual = target.getFibonacci(5);
 
         for (int i = 0 ; i < expected.size() ; i++) {
-            Assert.assertEquals(expected.get(i), actual.get(i));
+            Assert.assertEquals(BigInteger.valueOf(expected.get(i)), actual.get(i));
         }
 
         for (int i = 0 ; i < actual.size() ; i ++) {
-            Assert.assertEquals(expected.get(i), actual.get(i));
+            Assert.assertEquals(BigInteger.valueOf(expected.get(i)), actual.get(i));
         }
     }
 
