@@ -46,22 +46,23 @@ public class Calculator {
 
     public double calculate(String operation, double n1, double n2) {
 
-        switch (operation) {
-//            case CalculatorCommands.SUM.toString():
-            case "sum":
+        CalculatorCommands command = CalculatorCommands.valueOf(operation.toUpperCase());
+
+        switch (command) {
+            case SUM:
                 return n1 + n2;
-            case "sub":
+            case SUB:
                 return n1 - n2;
-            case "mul":
+            case MUL:
                 return n1 * n2;
-            case "div":
+            case DIV:
                 if (n2 == 0) {
                     throw new RuntimeException("Error: Division by 0");
                 } else {
                     return n1 / n2;
                 }
             default:
-                throw new RuntimeException("Error: valid operations are sum, sub, mil and div");
+                throw new RuntimeException("Error: valid operations are SUM, SUB, MUL and DIV");
 
         }
     }
