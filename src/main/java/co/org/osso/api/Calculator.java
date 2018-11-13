@@ -34,16 +34,6 @@ public class Calculator {
 
     }
 
-    /*
-    func fibonacci() func() int {
-        x, y := 0, 1
-        return func() int {
-            x, y = y, x + y
-            return x
-        }
-    }
-    */
-
     public BigInteger getFactorial(int number) {
         BigInteger factorial = BigInteger.ONE;
         for (int i = 1; i <= number; i++)
