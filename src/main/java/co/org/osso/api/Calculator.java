@@ -17,7 +17,6 @@ public class Calculator {
     public List<BigInteger> getFibonacci(Integer number) {
 
         if (fibonacci.size() >= number){
-            System.out.println("CACHE number = " + number);
             return fibonacci.subList(0,number-1);
         }
 
