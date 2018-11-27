@@ -17,17 +17,23 @@ public class Calculator {
     public List<BigInteger> getFibonacci(Integer number) {
 
         if (fibonacci.size() >= number){
-            System.out.println("CACHE number = " + number);
-            return fibonacci.subList(0,number-1);
-        }
+            return fibonacci.subList(0,number);
 
-        if (fibonacci.size() == 0) {
-            fibonacci.add(BigInteger.ONE);
-            fibonacci.add(BigInteger.ONE);
-        }
+        } else {
+            if (fibonacci.size() == 0) {
+                fibonacci.add(BigInteger.ONE);
+                fibonacci.add(BigInteger.ONE);
 
-        for (int i = 2; i < number; i++) {
-           fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
+                for (int i = 2; i < number; i++) {
+                    fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
+                }
+
+            }
+
+            for (int i = fibonacci.size(); i < number; i++) {
+                fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
+            }
+
         }
 
         return fibonacci;
