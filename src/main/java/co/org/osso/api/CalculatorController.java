@@ -24,7 +24,6 @@ public class CalculatorController {
 
     @GetMapping("/fibonacci/{number}")
     public List<BigInteger> getFibonacci(@PathVariable("number") Integer number){
-        bugsnag.notify(new RuntimeException("Test error"));
         return calculator.getFibonacci(number);
     }
 
