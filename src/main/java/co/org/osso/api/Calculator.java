@@ -18,7 +18,6 @@ public class Calculator {
 
         if (fibonacci.size() >= number){
             return fibonacci.subList(0,number);
-
         } else {
             if (fibonacci.size() == 0) {
                 fibonacci.add(BigInteger.ONE);
