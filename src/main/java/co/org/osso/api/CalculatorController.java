@@ -28,6 +28,7 @@ public class CalculatorController {
     }
 
     @GetMapping("/factorial/{number}")
+    // JSON that contains a biginteger
     public BigInteger getFactorial(@PathVariable("number") int number){
         return calculator.getFactorial(number);
     }
