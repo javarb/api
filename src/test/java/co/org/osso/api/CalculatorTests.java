@@ -27,34 +27,18 @@ public class CalculatorTests {
 
     @Test
     public void checkCalculatorFibonacciIntegrity(){
-        int sizeList1 = 10;
-        int sizeList2 = 15;
+        int sizeList1 = 0;
+        int sizeList2 = 1;
         int sizeList3 = 25;
 
         List<BigInteger> answer1 = target.getFibonacci(sizeList1);
-        System.out.println("answer 1 (size: " + answer1.size() +" )");
-        for (int i = 0; i < answer1.size(); i++){
-            System.out.println(answer1.get(i));
-        }
-
         Assert.assertEquals(sizeList1, answer1.size());
 
         List<BigInteger> answer2 = target.getFibonacci(sizeList2);
-        System.out.println("answer 2 cached (size: " + answer2.size() +" )");
-        for (int i = 0; i < answer2.size(); i++){
-            System.out.println(answer2.get(i));
-        }
-
         Assert.assertEquals(sizeList2, answer2.size());
 
         List<BigInteger> answer3 = target.getFibonacci(sizeList3);
-        System.out.println("answer 3 cached (size: " + answer3.size() +" )");
-        for (int i = 0; i < answer3.size(); i++){
-            System.out.println(answer3.get(i));
-        }
-
         Assert.assertEquals(sizeList3, answer3.size());
-
     }
 
 

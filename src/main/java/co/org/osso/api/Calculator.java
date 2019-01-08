@@ -6,42 +6,27 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-import static co.org.osso.api.CalculatorCommands.SUM;
-import static java.lang.Enum.valueOf;
-
 @Service
 public class Calculator {
 
-    List<BigInteger> fibonacci = new ArrayList<>();
+    private List<BigInteger> fibonacci = getInitialFibonacciList();
 
     public List<BigInteger> getFibonacci(Integer number) {
-
-        if (previouslyCalculatedFibonacci(number))
-            return fibonacci.subList(0,number);
-
-        buildFibonacciList(number);
-        return fibonacci;
-
-    }
-
-    private boolean previouslyCalculatedFibonacci(Integer number) {
-        return (fibonacci.size() >= number)? true : false;
-    }
-
-    private void buildFibonacciList(Integer number) {
-        if (fibonacci.size() == 0) {
-            fibonacci.add(BigInteger.ONE);
-            fibonacci.add(BigInteger.ONE);
-
-            for (int i = 2; i < number; i++) {
-                fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
-            }
-
+        if (fibonacci.size() >= number) {
+            return fibonacci.subList(0, number);
         }
 
         for (int i = fibonacci.size(); i < number; i++) {
             fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
         }
+        return fibonacci;
+    }
+
+    private List<BigInteger> getInitialFibonacciList() {
+        List<BigInteger> fibonacci = new ArrayList<>();
+        fibonacci.add(BigInteger.ONE);
+        fibonacci.add(BigInteger.ONE);
+        return fibonacci;
     }
 
     public BigInteger getFactorial(int number) {
