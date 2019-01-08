@@ -26,6 +26,28 @@ public class ApiApplicationCalculatorTests {
     }
 
     @Test
+    public void checkCalculatorFibonacciIntegrity(){
+        List<BigInteger> answer1 = target.getFibonacci(10);
+        System.out.println("answer 1 (size: " + answer1.size() +" )");
+        for (int i = 0; i < answer1.size(); i++){
+            System.out.println(answer1.get(i));
+        }
+
+        List<BigInteger> answer2 = target.getFibonacci(15);
+        System.out.println("answer 2 cached (size: " + answer2.size() +" )");
+        for (int i = 0; i < answer2.size(); i++){
+            System.out.println(answer2.get(i));
+        }
+
+        List<BigInteger> answer3 = target.getFibonacci(25);
+        System.out.println("answer 3 cached (size: " + answer3.size() +" )");
+        for (int i = 0; i < answer3.size(); i++){
+            System.out.println(answer3.get(i));
+        }
+    }
+
+
+    @Test
     public void checkCalculatorFactorial(){
         Assert.assertEquals(BigInteger.valueOf(3_628_800), target.getFactorial(10));
     }
