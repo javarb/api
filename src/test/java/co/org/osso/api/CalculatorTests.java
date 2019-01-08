@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
-public class ApiApplicationCalculatorTests {
+public class CalculatorTests {
 
     Calculator target = new Calculator();
 
@@ -24,6 +24,23 @@ public class ApiApplicationCalculatorTests {
             Assert.assertEquals(BigInteger.valueOf(expected.get(i)), actual.get(i));
         }
     }
+
+    @Test
+    public void checkCalculatorFibonacciIntegrity(){
+        int sizeList1 = 0;
+        int sizeList2 = 1;
+        int sizeList3 = 25;
+
+        List<BigInteger> answer1 = target.getFibonacci(sizeList1);
+        Assert.assertEquals(sizeList1, answer1.size());
+
+        List<BigInteger> answer2 = target.getFibonacci(sizeList2);
+        Assert.assertEquals(sizeList2, answer2.size());
+
+        List<BigInteger> answer3 = target.getFibonacci(sizeList3);
+        Assert.assertEquals(sizeList3, answer3.size());
+    }
+
 
     @Test
     public void checkCalculatorFactorial(){
