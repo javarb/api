@@ -9,6 +9,12 @@ import java.util.List;
 @Service
 public class Calculator {
 
+    private Logger logger;
+
+    Calculator (Logger logger) {
+        this.logger = logger;
+    }
+
     private List<BigInteger> fibonacci = getInitialFibonacciList();
 
     public List<BigInteger> getFibonacci(Integer number) {
@@ -52,7 +58,9 @@ public class Calculator {
                 return n1 * n2;
             case DIV:
                 if (n2 == 0) {
-                    throw new RuntimeException("Error: Division by 0");
+                    String message = "Error: Division by 0";
+                    logger.log(message);
+                    throw new RuntimeException(message);
                 } else {
                     return n1 / n2;
                 }

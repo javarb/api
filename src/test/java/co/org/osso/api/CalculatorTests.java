@@ -9,7 +9,18 @@ import java.util.List;
 
 public class CalculatorTests {
 
-    Calculator target = new Calculator();
+    TestLogger logger = new TestLogger();
+    Calculator target = new Calculator(logger);
+
+    @Test
+    public void logDivisionByZeroError(){
+        try {
+            target.calculate("DIV",1,0);
+        } catch (RuntimeException re) { }
+
+        Assert.assertEquals(1, logger.logs.size());
+        Assert.assertEquals("Error: Division by 0", logger.logs.get(0));
+    }
 
     @Test
     public void checkCalculatorFibonacci(){

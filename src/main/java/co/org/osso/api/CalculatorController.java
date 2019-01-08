@@ -14,21 +14,25 @@ import java.util.List;
 @RequestMapping("/api")
 public class CalculatorController {
 
+    private static final String FIBONACCI_URL = "/fibonacci/";
+    private static final String FACTORIAL_URL = "/factorial/";
     private final Calculator calculator;
-    private final Bugsnag bugsnag;
+    private Logger logger;
 
-    public CalculatorController(Calculator calculator, Bugsnag bugsnag) {
+    public CalculatorController(Calculator calculator, Logger logger) {
         this.calculator = calculator;
-        this.bugsnag = bugsnag;
+        this.logger = logger;
     }
 
-    @GetMapping("/fibonacci/{number}")
+    @GetMapping(FIBONACCI_URL + "{number}")
     public List<BigInteger> getFibonacci(@PathVariable("number") Integer number){
+        logger.log(FIBONACCI_URL + number);
         return calculator.getFibonacci(number);
     }
 
-    @GetMapping("/factorial/{number}")
+    @GetMapping(FACTORIAL_URL + "{number}")
     public BigInteger getFactorial(@PathVariable("number") int number){
+        logger.log(FACTORIAL_URL + number);
         return calculator.getFactorial(number);
     }
 
