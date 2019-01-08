@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
-public class ApiApplicationCalculatorTests {
+public class CalculatorTests {
 
     Calculator target = new Calculator();
 
@@ -27,23 +27,34 @@ public class ApiApplicationCalculatorTests {
 
     @Test
     public void checkCalculatorFibonacciIntegrity(){
-        List<BigInteger> answer1 = target.getFibonacci(10);
+        int sizeList1 = 10;
+        int sizeList2 = 15;
+        int sizeList3 = 25;
+
+        List<BigInteger> answer1 = target.getFibonacci(sizeList1);
         System.out.println("answer 1 (size: " + answer1.size() +" )");
         for (int i = 0; i < answer1.size(); i++){
             System.out.println(answer1.get(i));
         }
 
-        List<BigInteger> answer2 = target.getFibonacci(15);
+        Assert.assertEquals(sizeList1, answer1.size());
+
+        List<BigInteger> answer2 = target.getFibonacci(sizeList2);
         System.out.println("answer 2 cached (size: " + answer2.size() +" )");
         for (int i = 0; i < answer2.size(); i++){
             System.out.println(answer2.get(i));
         }
 
-        List<BigInteger> answer3 = target.getFibonacci(25);
+        Assert.assertEquals(sizeList2, answer2.size());
+
+        List<BigInteger> answer3 = target.getFibonacci(sizeList3);
         System.out.println("answer 3 cached (size: " + answer3.size() +" )");
         for (int i = 0; i < answer3.size(); i++){
             System.out.println(answer3.get(i));
         }
+
+        Assert.assertEquals(sizeList3, answer3.size());
+
     }
 
 

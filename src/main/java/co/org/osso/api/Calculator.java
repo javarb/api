@@ -16,27 +16,32 @@ public class Calculator {
 
     public List<BigInteger> getFibonacci(Integer number) {
 
-        if (fibonacci.size() >= number){
+        if (previouslyCalculatedFibonacci(number))
             return fibonacci.subList(0,number);
-        } else {
-            if (fibonacci.size() == 0) {
-                fibonacci.add(BigInteger.ONE);
-                fibonacci.add(BigInteger.ONE);
 
-                for (int i = 2; i < number; i++) {
-                    fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
-                }
+        buildFibonacciList(number);
+        return fibonacci;
 
-            }
+    }
 
-            for (int i = fibonacci.size(); i < number; i++) {
+    private boolean previouslyCalculatedFibonacci(Integer number) {
+        return (fibonacci.size() >= number)? true : false;
+    }
+
+    private void buildFibonacciList(Integer number) {
+        if (fibonacci.size() == 0) {
+            fibonacci.add(BigInteger.ONE);
+            fibonacci.add(BigInteger.ONE);
+
+            for (int i = 2; i < number; i++) {
                 fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
             }
 
         }
 
-        return fibonacci;
-
+        for (int i = fibonacci.size(); i < number; i++) {
+            fibonacci.add(i, fibonacci.get(i - 1).add(fibonacci.get(i - 2)));
+        }
     }
 
     public BigInteger getFactorial(int number) {
