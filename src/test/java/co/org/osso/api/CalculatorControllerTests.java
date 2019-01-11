@@ -26,8 +26,6 @@ public class CalculatorControllerTests {
         Assert.assertEquals("/factorial/4", logger.logs.get(0));
     }
 }
-
-@Configuration
 class TestLogger implements Logger {
 
     List<String> logs = new ArrayList<>();

@@ -1,5 +1,8 @@
 package co.org.osso.api;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DefaultLogger implements Logger {
 
     @Override
