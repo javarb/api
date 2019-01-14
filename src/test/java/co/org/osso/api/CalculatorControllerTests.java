@@ -2,8 +2,6 @@ package co.org.osso.api;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.context.annotation.Configuration;
-
 import java.util.ArrayList;
 import java.util.List;
 
