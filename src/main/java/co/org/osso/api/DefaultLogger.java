@@ -8,22 +8,30 @@ import java.sql.Timestamp;
 
 @Component
 public class DefaultLogger implements Logger {
+    private final String ip;
+
+    DefaultLogger () {
+        InetAddress inetAddress;
+
+        try {
+            inetAddress = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            inetAddress = null;
+        }
+
+        if (inetAddress != null){
+            ip = inetAddress.toString();
+        } else {
+            ip = "";
+        }
+    }
 
     @Override
     public void log(String message) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        InetAddress ip = null;
         long threadId = Thread.currentThread().getId();
 
-        try {
-            ip = InetAddress.getLocalHost();
-            message = timestamp + "  JAAR-INFO [" + threadId + "] " + ip + ": " + message;
-            System.out.println(message);
-
-
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-
+        message = timestamp + "  INFO [" + threadId + "] " + ip + ": " + message;
+        System.out.println(message);
     }
 }
